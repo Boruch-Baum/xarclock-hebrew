@@ -1,0 +1,28 @@
+Source: xarclock
+Section: x11
+Priority: optional
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Standards-Version: 4.6.0
+Build-Depends: debhelper-compat (= 13),
+               libx11-dev,
+               libxaw7-dev,
+               libxmu-dev,
+               libxt-dev,
+               xutils-dev,
+Rules-Requires-Root: no
+Homepage: https://www.ibiblio.org/pub/Linux/X11/clocks
+Vcs-Browser: https://salsa.debian.org/debian/xarclock
+Vcs-Git: https://salsa.debian.org/debian/xarclock.git
+
+Package: xarclock
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+Description: reversed xclock
+ If clocks had been invented in Argentina (southern hemisphere), they
+ would run counter-clockwise. Down there a sundial runs the other way
+ around!
+ .
+ The program is an extension of the standard X clock widget.  New
+ features are: Configurable direction of rotation and font support in
+ analog mode.

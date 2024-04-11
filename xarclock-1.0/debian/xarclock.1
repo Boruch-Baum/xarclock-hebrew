@@ -1,0 +1,238 @@
+.\" xarclock - extended xclock(1)
+.\" Copyright (c) 1995  Martin Schulze <Martin.Schulze@Linux.DE>
+.\" 
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\" 
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\" 
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.\" Some of the sentences used are taken from the xclock(1x)
+.\" manpage that comes with X11.
+.\"
+.\" This manpage is written especially for Debian Linux.
+.\"
+.TH XARCLOCK 1 "29 May, 1996" "X11" "X Version 11"
+.SH NAME
+xarclock \- extended xclock(1)
+.SH SYNOPSIS
+.B xarclock
+.RB [ "\-roman" ]
+.RB [ "\-arabic" ]
+.RB [ "\-south" ]
+.RB [ "\-north" ]
+.RB [ "\-analog" ]
+.RB [ "\-digital" ]
+.RB [ "\-chime" ]
+.IR pixels ]
+.RB [ "\-fg"
+.IR color ]
+.RB [ "\-bg"
+.IR color ]
+.RB [ "\-hd"
+.IR color ]
+.RB [ "\-hl"
+.IR color ]
+.RB [ "\-bd"
+.IR color ]
+.RB [ "\-fn"
+.IR fontname ]
+.RB [ "\-help" ]
+.RB [ "\-padding"
+.IR pixels ]
+.RB [ "\-rv" ]
+.RB [ "\-update"
+.IR seconds ]
+.RB [ "\-display"
+.IR displayname ]
+.RB [ "\-geometry"
+.IR geom ]
+.SH DESCRIPTION
+The
+.I xarclock
+program displays the time in analog or digital, reverse or normal
+form.  The time is continuously updated at a frequency which may be
+specified by the user.  This program is based on the program
+.BR xlock (1)
+that is distributed together with the X11 release and is nothing more
+than a wrapper around the Athena Clock widget.
+
+This program is an extension of the standard X clock widget.  New
+features are: Configurable direction of rotation and font support in
+analog mode.
+
+.SH OPTIONS
+.B Xarclock
+accepts all of the standard X Toolkit command line options along with
+the additional options listed below:
+
+.TP
+.B \-roman
+This option specifies that roman digits should be used on an analog
+clock.
+.TP
+.B \-arabic
+This option specifies that arabic digits should be used on an analog
+clock.
+This is the default
+.TP
+.B \-south
+This option specifies the direction the clock will turn, on the
+southern half of the earth the 3, early afternoon, is on the left
+side.  This is the default.
+.TP
+.B \-north
+This option specifies that the clock will behave like
+.BR xclock (1).
+.TP
+.B \-analog
+This option indicates that a conventional 12 hour clock face with tick
+marks and hands should be used.  This is the default.
+.TP
+.BR \-digital " (or " \-d )
+This option indicates that a 24 hour digital clock should be used.
+.TP
+.B \-chime
+This option indicates that the clock should chime
+once on the half hour and twice on the hour.
+.TP
+.BI \-hd " color" " \fR(or\fP \-hands " color "\fR)"
+This option specifies the color of the hands on an analog clock.  The
+default is
+.IR black .
+.TP
+.BI \-hl " color" " \fR(or\fP \-highlight " color "\fR)"
+This option specifies the color of the edges of the hands on an analog
+clock, and is only useful on color displays.  The default is
+.IR black .
+.TP
+.BI \-fn " fontname"
+This option sets the name of the used fonts on the analog clock to
+.IR fontname .
+.TP
+.B \-help
+This option indicates that a brief summary of the allowed options
+should be printed on the standard error.
+.TP
+.BI \-padding " pixels"
+This option specifies the width in pixels of the padding
+between the window border and clock text or picture.  The default is
+10 on a digital clock and 8 on an analog clock.
+.TP
+.BI \-update " seconds"
+This option specifies the frequency in seconds at which \fIxclock\fP
+should update its display.  If the clock is obscured and then exposed,
+it will be updated immediately.  A value of less than 30 seconds will
+enable a second hand on an analog clock.  The default is 60 seconds.
+
+.SH X DEFAULTS
+This program uses the
+.I Athena Clock
+widget.  It understands all of the core resource names and classes as
+well as:
+
+.TP
+.BR "width (" "class " Width)
+Specifies the width of the clock.  The default for analog clocks is 164
+pixels; the default for digital clocks is whatever is needed to hold the
+clock when displayed in the chosen font.
+.TP
+.BR "height (" "class " Height)
+Specifies the height of the clock.  The default for analog clocks is 164
+pixels; the default for digital clocks is whatever is needed to hold the
+clock when displayed in the chosen font.
+.TP
+.BR "update (" "class " Interval)
+Specifies the frequency in seconds at which the time should be redisplayed.
+.TP
+.BR "foreground (" "class " Foreground)
+Specifies the color for the tic marks. The default is depends on whether
+\fIreverseVideo\fP is specified.  If \fIreverseVideo\fP is specified
+the default is \fIlwhite\fP, otherwise the default is \fIblack\fP.
+.TP
+.BR "hands (" "class " Foreground)
+Specifies the color of the insides of the clock's hands. The default is
+depends on whether
+\fIreverseVideo\fP is specified.  If \fIreverseVideo\fP is specified
+the default is \fIlwhite\fP, otherwise the default is \fIblack\fP.
+.TP
+.BR "highlight (" "class " Foreground)
+Specifies the color used to highlight the clock's hands. The default is
+ depends on whether
+\fIreverseVideo\fP is specified.  If \fIreverseVideo\fP is specified
+the default is \fIlwhite\fP, otherwise the default is \fIblack\fP.
+.TP
+.BR "analog (" "class " Boolean)
+Specifies whether or not an analog clock should be used instead of a digital
+one.  The default is True.
+.TP
+.BR "roman (" "class " Boolean)
+Specifies whether roman or arabic digits should be used on the analog
+clock.  The default is True.
+.TP
+.BR "north (" "class " Boolean)
+Specifies whether or not reverse direction of rotation of hands of the
+analog clock should be used.  The default is False.
+.TP
+.BR "chime (" "class " Boolean)
+Specifies whether or not a bell should be rung on the hour and half hour.
+.TP
+.BR "padding (" "class " Margin)
+Specifies the amount of internal padding in pixels to be used.  The
+default is 8.
+.TP
+.BR "font (" "class " Font)
+Specifies the font to be used for the digital clock.  Note that variable width
+fonts currently will not always display correctly.
+
+.SH WIDGETS
+In order to specify resources, it is useful to know the hierarchy of
+the widgets which compose \fIxclock\fR.  In the notation below,
+indentation indicates hierarchical structure.  The widget class name
+is given first, followed by the widget instance name.
+.sp
+.nf
+.\" .TA .5i
+.ta .5i
+XClock  xclock
+        Clock  clock
+.fi
+.sp
+
+.SH ENVIRONMENT
+.PP
+.TP
+.B DISPLAY
+to get the default host and display number.
+.TP
+.B XENVIRONMENT
+to get the name of a resource file that overrides the global resources
+stored in the RESOURCE_MANAGER property.
+.SH FILES
+.TP
+.I /usr/X11R6/lib/X11/app-defaults/XClock
+Specifies required resources
+
+.SH COPYRIGHT
+Original code copyrighted by Digital Equipment Corporation and the
+Massachusetts Institute of Technology.  The modifications made by
+Jaime Garcia-Ghirelli (jaime@inforamp.net) remain in the public
+domain.
+
+This manual page is a mixture of recycled
+.BR xclock (1)
+stuff and new stuff by Martin Schulze (Martin.Schulze@linux.de)
+.SH "SEE ALSO"
+.BR X (1),
+.BR xclock (1),
+.BR xrdb (1),
+.BR time (3C),
+Athena Clock widget.

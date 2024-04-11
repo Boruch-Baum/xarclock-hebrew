@@ -1,0 +1,15 @@
+Description: fix hardening problems with CFLAGS and LDFLAGS.
+Author: Paulo Henrique de Lima Santana (phls) <phls@softwarelivre>
+Last-Update: 2017-01-05
+Index: xarclock-1.0/Imakefile
+===================================================================
+--- xarclock-1.0.orig/Imakefile
++++ xarclock-1.0/Imakefile
+@@ -1,6 +1,6 @@
+ XCOMM $XConsortium: Imakefile /main/17 1996/01/14 16:50:54 kaleb $
+ # modified by Andreas Franzen, 13 Dez 1997
+-      CCOPTIONS = -O2 -g -Wall
++      CCOPTIONS = -O2 -g -Wall -fstack-protector-strong -Wformat -Werror=format-security -fPIE -pie -Wl,-z,relro -Wl,-z,now
+         DEPLIBS = XkbClientDepLibs XawClientDepLibs
+ LOCAL_LIBRARIES = XkbClientLibs XawClientLibs -lm
+            SRCS = xarclock.c ARClock.c

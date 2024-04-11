@@ -1,0 +1,34 @@
+* xarclock with Hebrew support
+https://github.com/Boruch-Baum/xarclock-hebrew
+
+** Background
+Medieval Jewish clocks seem to have run anti-clockwise. The only
+surviving example of such that I'm aware is on [[https://en.wikipedia.org/wiki/Jewish_Town_Hall_(Prague)][Prague's Jewish town
+hall]] [[https://www.google.com/search?q=prague+hebrew+clock+images][(2)]].
+
+Sometime prior to April 1994, Jaime Garcia Ghirelli modified the
+xclock program (©1989 X Consortium) to run anti-clockwise, because "If
+clocks had been invented in Argentina (southern hemisphere), they
+would run anti-clockwise. Down there a sundial runs the other way
+around!". [[https://www.ibiblio.org/pub/Linux/X11/clocks/xarclock.tgz][That program (xarclock)]] is the basis for [[https://packages.debian.org/trixie/xarclock][debian's package
+xarclock]]. However, it only has presentation options for Arabic or
+Roman numeral face digits.
+
+The version in this repository adds a -hebrew option.
+
+** Reproducing this repository start point from scratch
+Here's how I began work on this project:
+#+begin_src shell
+aa=xarclock
+mkdir $aa
+cd $aa
+apt source $aa
+sudo apt build-dep $aa
+#+end_src
+** Building and installing a debian package from this repository
+#+begin_src shell
+cd xarclock-1.0
+dpkg-buildpackage -b -uc -us
+cd -
+sudo dpkg -i xarclock_1.0-19_amd64.deb
+#+end_src

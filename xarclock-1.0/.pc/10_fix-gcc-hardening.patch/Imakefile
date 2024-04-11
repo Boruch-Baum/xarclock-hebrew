@@ -1,0 +1,11 @@
+XCOMM $XConsortium: Imakefile /main/17 1996/01/14 16:50:54 kaleb $
+# modified by Andreas Franzen, 13 Dez 1997
+      CCOPTIONS = -O2 -g -Wall
+        DEPLIBS = XkbClientDepLibs XawClientDepLibs
+LOCAL_LIBRARIES = XkbClientLibs XawClientLibs -lm
+           SRCS = xarclock.c ARClock.c
+           OBJS = xarclock.o ARClock.o
+        HEADERS = ClockP.h Clock.h
+        DEFINES = XkbClientDefines
+
+ComplexProgramTargetNoMan(xarclock)
