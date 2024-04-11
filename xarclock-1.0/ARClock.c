@@ -125,8 +125,8 @@ static XtResource resources[] = {
         
 /* Following lines added by Andreas Franzen using source code by
  * Jaime Garcia Ghirelli: */
-    {XtNroman, XtCBoolean, XtRBoolean, sizeof(Boolean),
-        offset(roman), XtRImmediate, (XtPointer) FALSE},
+    {XtNnumerals, XtCBoolean, XtRInt, sizeof(int),
+        offset(numerals), XtRImmediate, (XtPointer) FALSE},
     {XtNnorth, XtCBoolean, XtRBoolean, sizeof(Boolean),
         offset(north), XtRImmediate, (XtPointer) FALSE},
         
@@ -372,13 +372,17 @@ static void clock_tic(client_data, id)
   double angle, x, y;
   double cos();
   double sin();
-  static String arabic_roman_numbers[]=
+  static String numerals[]=
     { "9", "10", "11", "12", "1", "2", "3", "4", "5", "6", "7", "8",
 	"3", "2", "1", "12", "11", "10", "9", "8", "7", "6", "5", "4",
+	
 	"IX", "X", "XI", "XII", "I", "II", "III", "IIII", "V",
         "VI","VII", "VIII",
 	"III", "II", "I", "XII", "XI", "X", "IX", "VIII", "VII",
         "VI","V", "IIII",
+
+	"ט", "י", "אי", "בי", "א", "ב", "ג", "ד", "ה", "ו", "ז", "ח",
+	"ג", "ב", "א", "בי", "אי", "י", "ט", "ח", "ז", "ו", "ה", "ד",
     };
 
 	if (id || !w->clock.interval_id)
@@ -474,20 +478,19 @@ static void clock_tic(client_data, id)
 	/* Translate for X co-ordinate system */
 	x = (int) w->clock.centerX + x;
 	y = (int) w->clock.centerY - y;
-	if (w->clock.roman == FALSE) j = j;
-	else j = j + 24;
+	j = w->clock.numerals * 24 + j;
 	/* Center string */
 	x = x - XTextWidth(w->clock.font,
-			   arabic_roman_numbers[j],
-			   strlen(arabic_roman_numbers[j]))/2;
+			   numerals[j],
+			   strlen(numerals[j]))/2;
 	y = y + (w->clock.font->ascent + w->clock.font->descent)/2;
 	XDrawImageString(XtDisplay(w),
 			 XtWindow(w),
 			 w->clock.myGC,
 			 x,
 			 y,
-			 arabic_roman_numbers[j],
-			 strlen(arabic_roman_numbers[j]));
+			 numerals[j],
+			 strlen(numerals[j]));
       }
 			    
 			    /*

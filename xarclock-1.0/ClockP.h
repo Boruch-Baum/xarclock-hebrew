@@ -82,7 +82,7 @@ typedef struct {
 
 /* Following lines added by Andreas Franzen using source code by
  * Jaime Garcia Ghirelli: */
-         Boolean roman;
+         int     numerals;
          Boolean north;
 
 	 Boolean show_second_hand;

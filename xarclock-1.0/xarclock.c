@@ -66,8 +66,9 @@ static XrmOptionDescRec options[] = {
 
 /* Following lines added by Andreas Franzen using source code by
  * Jaime Garcia Ghirelli: */
-{"-arabic",	"*clock.roman",         XrmoptionNoArg,         "FALSE"},
-{"-roman",	"*clock.roman",         XrmoptionNoArg,         "TRUE"},
+{"-arabic",	"*clock.numerals",         XrmoptionNoArg,         "0"},
+{"-roman",	"*clock.numerals",         XrmoptionNoArg,         "1"},
+{"-hebrew",	"*clock.numerals",         XrmoptionNoArg,         "2"},
 {"-south",	"*clock.north",         XrmoptionNoArg,         "FALSE"},
 {"-north",	"*clock.north",         XrmoptionNoArg,         "TRUE"},
 
@@ -90,7 +91,7 @@ int Syntax(call)
 /* Following lines added by Andreas Franzen using source code by
  * Jaime Garcia Ghirelli: */
         (void) printf ("Usage: %s \n", call);
-        (void) printf ("[-roman] [-arabic] [-south] [-north] \n");
+        (void) printf ("[-roman] [-arabic] [-hebrew] [-south] [-north] \n");
 
 /* Following line added by Andreas Franzen using a patch from
  * Martin Schulze. */

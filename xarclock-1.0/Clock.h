@@ -70,7 +70,7 @@ SOFTWARE.
 
 Following lines added by Andreas Franzen using source code by
 Jaime Garcia Ghirelli:
- roman               Boolean            Boolean         True
+ numerals            Integer            Integer         1
  north               Boolean            Boolean         False
 
  background	     Background		Pixel		white
@@ -104,8 +104,8 @@ Jaime Garcia Ghirelli:
 
 /* Following lines added by Andreas Franzen using source code by
  * Jaime Garcia Ghirelli: */
-		/* Boolean: arabic if FALSE */
-#define XtNroman "roman"
+		/* Integer: 0=arabic, 1=roman, 2=hebrew */
+#define XtNnumerals "numerals"
 		/* Boolean: clockwise if FALSE */
 #define XtNnorth "north"
 
